@@ -13,8 +13,8 @@ router.get("/:id", (req, res) => {
   const blogpost = firestore.getDoc(firestore.doc(db, "blogposts", postId));
   blogpost
     .then((response) => {
-      const post = response.data;
-      if (post) return res.send(response.data);
+      const post = response.data();
+      if (post) return res.send(post);
       return res.send(`No doc......sorry`);
     })
     .catch((error) => {
